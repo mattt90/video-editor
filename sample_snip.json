@@ -1,0 +1,154 @@
+{
+    "threads": 16,
+    "privacyStatus": "private",
+    "publishAt": "2023-04-27T8:00:00",
+    "keywords": "",
+    "playlist": "playlist",
+    "episode_number": "0",
+    "episode_title": "title",
+    "episode_series_title": "playlist title",
+    "category": 20,
+    "episode_description": "description",
+    "working_directory": "D:/recording",
+    "finalOutputFormat": "{working_directory}/outputs/e{episode_number}/{episode_title}.mp4",
+    "thumbnailOutputFormat": "{working_directory}/outputs/e{episode_number}/thumbnail.png",
+    "output_format": "{working_directory}/outputs/e{episode_number}/{episode_title} Ep {episode_number} {episode_series_title}.mp4",
+    "video_processor": {
+        "intro": {
+            "fade": 3,
+            "audio_path": "assets/audio.mp3",
+            "video_path": "assets/video.mp4"
+        },
+        "outro": {
+            "fade": 3,
+            "audio_path": "assets/Inspired (Instrumental) - NEFFEX.mp3",
+            "video_path": "assets/Outro.mp4"
+        },
+        "scenes": [
+            {
+                "resource": {
+                    "path": "D:/recording/clip1.mkv",
+                    "subclip": {
+                        "enabled": false,
+                        "start": null,
+                        "end": null
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "path": "D:/recording/clip2.mkv",
+                    "subclip": {
+                        "enabled": false,
+                        "start": null,
+                        "end": null
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "path": "D:/recording/clip3.mkv"
+                },
+                "behaviors": [
+                    {
+                        "key": "snip",
+                        "value": {
+                            "subclips": [
+                                {
+                                    "start": "00:00:01",
+                                    "end": "00:00:02"
+                                },
+                                {
+                                    "start": "00:26:05",
+                                    "end": null
+                                }
+                            ]
+                        }
+                    }]
+            }
+        ]
+    },
+    "thumbnail_processor": {
+        "thumbnailOutputFormat": "{working_directory}/outputs/e{episode_number}/thumbnail.png",
+        "image_steps": [
+            {
+                "key": "BackgroundImage",
+                "values": {
+                    "image_path": "imagepath.jpeg"
+                }
+            },
+            {
+                "key": "CropCenterIdealThumbnailSize",
+                "values": {
+                }
+            },
+            {
+                "key": "AddScaledImage",
+                "values": {
+                    "image_path": "assets/logo.png",
+                    "scale": 1.75,
+                    "location": {
+                        "x": 10,
+                        "y": 10
+                    }
+                }
+            },
+            {
+                "key": "AddText",
+                "values": {
+                    "text": "Playlist name",
+                    "location": {
+                        "x": 25,
+                        "y": 615
+                    },
+                    "font": {
+                        "path": "C:/WINDOWS/Fonts/FONT.TTF",
+                        "size": 75
+                    },
+                    "fill": {
+                        "r": 248,
+                        "g": 171,
+                        "b": 27
+                    },
+                    "stroke": {
+                        "width": 2,
+                        "fill": {
+                            "r": 82,
+                            "g": 23,
+                            "b": 13
+                        }
+                    },
+                    "spacing": 10
+                }
+            },
+            {
+                "key": "AddText",
+                "values": {
+                    "text": "{episode_number}",
+                    "location": {
+                        "x": 1075,
+                        "y": 10
+                    },
+                    "font": {
+                        "path": "C:/WINDOWS/Fonts/FONT.TTF",
+                        "size": 125
+                    },
+                    "fill": {
+                        "r": 248,
+                        "g": 171,
+                        "b": 27
+                    },
+                    "stroke": {
+                        "width": 2,
+                        "fill": {
+                            "r": 82,
+                            "g": 23,
+                            "b": 13
+                        }
+                    },
+                    "spacing": 10
+                }
+            }
+        ]
+    }
+}
