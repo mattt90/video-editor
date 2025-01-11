@@ -1,7 +1,9 @@
 import json
 import thumbnail_editor
 import video_processor
+import numpy
 from moviepy.editor import AudioFileClip, concatenate_videoclips, vfx, VideoFileClip
+from moviepy.video.VideoClip import ImageClip
 import sys
 import os
 
@@ -46,18 +48,66 @@ def process_folder_scene(resource):
             clips.append(VideoFileClip(resource["path"] + "/" + file))
     return concatenate_videoclips(clips)
 
+def combine(values):
+    clips = []
+    for resource in values["resources"]:
+        if (resource["key"] == "createimagevideo"):
+            clips.append(create_image_video(resource["value"]))
+
+    v = concatenate_videoclips(clips)
+
+    if ("audio" in values and len(values["audio"]) > 0):
+        print(values["audio"])
+        v = v.set_audio(AudioFileClip(values["audio"]).subclip(0, v.duration))
+        if ("volume" in values):
+            v = v.volumex(values["volume"])
+
+    return v
+
+def create_image_video(values):
+    image = None
+    l = None
+    a = None
+    for step in values["image_steps"]:
+        image = thumbnail_editor.process_image_step(step["key"], step["values"], image)
+
+    # if l is longer than a.duration, may need to loop audio
+    if ("audio" in values and len(values["audio"]) > 0):
+        a = AudioFileClip(values["audio"])
+
+    if ("length" in values):
+        l = values["length"]
+    elif (a != None):
+        l = a.duration
+
+    clip = ImageClip(numpy.array(image), duration=l)
+    if (a != None):
+        clip = clip.set_audio(a.subclip(0, l))
+        if ("volume" in values):
+            clip = clip.volumex(values["volume"])
+    return clip
+
+def create_resource(resource_options):
+    if (resource_options["key"] == "combine"):
+        return combine(resource_options["value"])
+    elif (resource_options["key"] == "createimagevideo"):
+        return create_image_video(resource_options["value"])
+
 def process_scene(scene):
-    scene_resource = scene["resource"]
     resource = None
-    if ("isFolder" in scene_resource and scene_resource["isFolder"]):
-        return process_folder_scene(scene_resource)
-    else:
-        resource = VideoFileClip(scene_resource["path"])
-        if ("subclip" in scene_resource and scene_resource["subclip"]["enabled"]):
-            resource = resource.subclip(scene_resource["subclip"]["start"], scene_resource["subclip"]["end"])
+
+    if "resource" in scene:
+        scene_resource = scene["resource"]
+        if ("isFolder" in scene_resource and scene_resource["isFolder"]):
+            return process_folder_scene(scene_resource)
+        if "path" in scene_resource:
+            resource = VideoFileClip(scene_resource["path"])
+            if ("subclip" in scene_resource and scene_resource["subclip"]["enabled"]):
+                resource = resource.subclip(scene_resource["subclip"]["start"], scene_resource["subclip"]["end"])
+    elif "createresource" in scene:
+        resource = create_resource(scene["createresource"])
 
     if "behaviors" in scene:
-        print("Behavior exists")
         for behavior in scene["behaviors"]:
             if behavior["key"] == "intro":
                 #resource = behavior_intro(resource, behavior["value"])
@@ -101,7 +151,7 @@ def process_episode(episode_data):
     #thumbnail_editor.create_thumbnail(episode_data["episode_number"], episode_data["thumbnail_output"])
     #thumbnail_editor.create_thumbnail(episode_data["episode_number"], thumbnail_output)
     thumbnail_editor.build_thumbnail(episode_data)
-
+    print("Done building thumbnail")
     processor_settings = episode_data["video_processor"]
     clips = process_scenes(processor_settings)
 
@@ -111,7 +161,7 @@ def process_episode(episode_data):
     print(final_video.duration / 60.0)
     output_format = episode_data["output_format"]
     output_path = output_format.format(**episode_data)
-    final_video.write_videofile(output_path, threads = episode_data["threads"])
+    final_video.write_videofile(output_path, threads = episode_data["threads"], fps=final_video.fps if final_video.fps != None else 120)
 
 #upload_file = 'upload.json'
 #if (len(sys.argv) > 1):

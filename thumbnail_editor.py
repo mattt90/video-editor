@@ -7,13 +7,15 @@ def build_thumbnail(episode_data):
     image.show()
     image.save(episode_data['thumbnail_processor']['thumbnailOutputFormat'].format(**episode_data))
 
-def process_image_step(key, values, image, episode_data):
+def process_image_step(key, values, image, episode_data = None):
     if (key == 'BackgroundImage'):
         return background_image(values)
     elif (key == 'CropCenterIdealThumbnailSize'):
         return crop(image, get_ideal_crop_size(image))#.resize((1280, 720)).convert("RGBA")
     elif (key == 'AddScaledImage'):
         return add_image(image, scale_image(values), values)
+    elif (key == 'Resize'):
+        return resize(image, values)
     elif (key == 'AddText'):
         add_text(image, values, episode_data)
     return image
@@ -28,7 +30,7 @@ def add_text(image, values, episode_data):
 
     I1.text(
         (values['location']['x'], values['location']['y']),
-        values['text'].format(**episode_data),
+        values['text'].format(**episode_data) if episode_data != None else values['text'],
         font=font,
         fill=fill_color,
         stroke_width=values['stroke']['width'],
@@ -40,6 +42,9 @@ def add_image(image, image_to_add, values):
     img = image.copy().convert("RGBA")
     img.paste(image_to_add, (values['location']['x'], values['location']['y']), image_to_add)
     return img
+
+def resize(image, values):
+    return image.resize((values["width"], values["height"])).convert("RGBA")
 
 def scale_image(values):
     image = Image.open(values['image_path'])

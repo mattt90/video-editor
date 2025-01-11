@@ -10,87 +10,87 @@
     "category": 20,
     "episode_description": "description",
     "working_directory": "D:/recording",
-    "finalOutputFormat": "{working_directory}/outputs/e{episode_number}/{episode_title}.mp4",
-    "thumbnailOutputFormat": "{working_directory}/outputs/e{episode_number}/thumbnail.png",
-    "output_format": "{working_directory}/outputs/e{episode_number}/{episode_title} Ep {episode_number} {episode_series_title}.mp4",
+    "finalOutputFormat": "output/finaltest.mp4",
+    "thumbnailOutputFormat": "output/thumbnail.png",
+    "output_format": "output/test.mp4",
     "video_processor": {
-        "intro": {
-            "fade": 3,
-            "audio_path": "assets/audio.mp3",
-            "video_path": "assets/video.mp4"
-        },
-        "outro": {
-            "fade": 3,
-            "audio_path": "assets/Inspired (Instrumental) - NEFFEX.mp3",
-            "video_path": "assets/Outro.mp4"
-        },
         "scenes": [
             {
-                "resource": {
-                    "path": "D:/recording/clip1.mkv",
-                    "subclip": {
-                        "enabled": false,
-                        "start": null,
-                        "end": null
-                    }
-                }
-            },
-            {
-                "resource": {
-                    "path": "D:/recording/clip2.mkv",
-                    "subclip": {
-                        "enabled": false,
-                        "start": null,
-                        "end": null
-                    }
-                }
-            },
-            {
-                "resource": {
-                    "path": "D:/recording/clip3.mkv"
-                },
-                "behaviors": [
-                    {
-                        "key": "snip",
-                        "value": {
-                            "subclips": [
-                                {
-                                    "start": "00:00:01",
-                                    "end": "00:00:02"
-                                },
-                                {
-                                    "start": "00:26:05",
-                                    "end": null
+                "createresource": {
+                    "key": "combine",
+                    "value": {
+                        "audio": "assets/background_audio.mp3",
+                        "volume": 0.8,
+                        "resources": [
+                            {
+                                "key": "createimagevideo",
+                                "value": {
+                                    "length": 1,
+                                    "image_steps": [
+                                        {
+                                            "key": "BackgroundImage",
+                                            "values": {
+                                                "image_path": "assets/background_image.jpg"
+                                            }
+                                        },
+                                        {
+                                            "key": "Resize",
+                                            "values": {
+                                                "width": 1920,
+                                                "height": 1080
+                                            }
+                                        },
+                                        {
+                                            "key": "AddText",
+                                            "values": {
+                                                "text": "Playlist name",
+                                                "location": {
+                                                    "x": 25,
+                                                    "y": 615
+                                                },
+                                                "font": {
+                                                    "path": "arial.ttf",
+                                                    "size": 75
+                                                },
+                                                "fill": {
+                                                    "r": 248,
+                                                    "g": 171,
+                                                    "b": 27
+                                                },
+                                                "stroke": {
+                                                    "width": 2,
+                                                    "fill": {
+                                                        "r": 82,
+                                                        "g": 23,
+                                                        "b": 13
+                                                    }
+                                                },
+                                                "spacing": 10
+                                            }
+                                        }
+                                    ]
                                 }
-                            ]
-                        }
-                    }]
+                            }
+
+                        ]
+                    }
+                }
+                
             }
         ]
     },
     "thumbnail_processor": {
-        "thumbnailOutputFormat": "{working_directory}/outputs/e{episode_number}/thumbnail.png",
+        "thumbnailOutputFormat": "output/thumbnail.png",
         "image_steps": [
             {
                 "key": "BackgroundImage",
                 "values": {
-                    "image_path": "imagepath.jpeg"
+                    "image_path": "assets/background_image.jpg"
                 }
             },
             {
                 "key": "CropCenterIdealThumbnailSize",
                 "values": {
-                }
-            },
-            {
-                "key": "AddScaledImage",
-                "values": {
-                    "image_path": "assets/logo.png",
-                    "scale": 1.75,
-                    "location": {
-                        "x": 10,
-                        "y": 10
-                    }
                 }
             },
             {
@@ -102,7 +102,7 @@
                         "y": 615
                     },
                     "font": {
-                        "path": "C:/WINDOWS/Fonts/FONT.TTF",
+                        "path": "arial.ttf",
                         "size": 75
                     },
                     "fill": {
@@ -130,7 +130,7 @@
                         "y": 10
                     },
                     "font": {
-                        "path": "C:/WINDOWS/Fonts/FONT.TTF",
+                        "path": "arial.ttf",
                         "size": 125
                     },
                     "fill": {
