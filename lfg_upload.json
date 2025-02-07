@@ -1,0 +1,329 @@
+{
+    "threads": 16,
+    "privacyStatus": "private",
+    "publishAt": "2023-04-27T8:00:00",
+    "keywords": "",
+    "playlist": "playlist",
+    "episode_number": "0",
+    "episode_title": "title",
+    "episode_series_title": "playlist title",
+    "category": 20,
+    "episode_description": "description",
+    "working_directory": "D:/recording",
+    "finalOutputFormat": "output/finaltest.mp4",
+    "thumbnailOutputFormat": "output/thumbnail.png",
+    "output_format": "output/test.mp4",
+    "video_processor": {
+        "scenes": [
+            {
+                "createresource": {
+                    "key": "createimagevideo",
+                    "value": {
+                        "audio": "assets/audio1.mp3",
+                        "image_steps": [
+                            {
+                                "key": "BackgroundImage",
+                                "values": {
+                                    "image_path": "assets/background_image.jpg"
+                                }
+                            },
+                            {
+                                "key": "Resize",
+                                "values": {
+                                    "width": 1920,
+                                    "height": 1080
+                                }
+                            },
+                            {
+                                "key": "AddText",
+                                "values": {
+                                    "text": "Playlist name",
+                                    "location": {
+                                        "x": 25,
+                                        "y": 615
+                                    },
+                                    "font": {
+                                        "path": "arial.ttf",
+                                        "size": 75
+                                    },
+                                    "fill": {
+                                        "r": 248,
+                                        "g": 171,
+                                        "b": 27
+                                    },
+                                    "stroke": {
+                                        "width": 2,
+                                        "fill": {
+                                            "r": 82,
+                                            "g": 23,
+                                            "b": 13
+                                        }
+                                    },
+                                    "spacing": 10
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "createresource": {
+                    "key": "createimagevideo",
+                    "value": {
+                        "audio": "assets/audio2.mp3",
+                        "image_steps": [
+                            {
+                                "key": "BackgroundImage",
+                                "values": {
+                                    "image_path": "assets/background_image.jpg"
+                                }
+                            },
+                            {
+                                "key": "Resize",
+                                "values": {
+                                    "width": 1920,
+                                    "height": 1080
+                                }
+                            },
+                            {
+                                "key": "AddText",
+                                "values": {
+                                    "text": "Text1",
+                                    "location": {
+                                        "x": 25,
+                                        "y": 615
+                                    },
+                                    "font": {
+                                        "path": "arial.ttf",
+                                        "size": 75
+                                    },
+                                    "fill": {
+                                        "r": 248,
+                                        "g": 171,
+                                        "b": 27
+                                    },
+                                    "stroke": {
+                                        "width": 2,
+                                        "fill": {
+                                            "r": 82,
+                                            "g": 23,
+                                            "b": 13
+                                        }
+                                    },
+                                    "spacing": 10
+                                }
+                            },
+                            {
+                                "key": "AddText",
+                                "values": {
+                                    "text": "Text2",
+                                    "location": {
+                                        "x": 100,
+                                        "y": 800
+                                    },
+                                    "font": {
+                                        "path": "arial.ttf",
+                                        "size": 75
+                                    },
+                                    "fill": {
+                                        "r": 248,
+                                        "g": 171,
+                                        "b": 27
+                                    },
+                                    "stroke": {
+                                        "width": 2,
+                                        "fill": {
+                                            "r": 82,
+                                            "g": 23,
+                                            "b": 13
+                                        }
+                                    },
+                                    "spacing": 10
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "createresource": {
+                    "key": "createimagevideo",
+                    "value": {
+                        "audio": "assets/audio3.mp3",
+                        "image_steps": [
+                            {
+                                "key": "BackgroundImage",
+                                "values": {
+                                    "image_path": "assets/background_image.jpg"
+                                }
+                            },
+                            {
+                                "key": "Resize",
+                                "values": {
+                                    "width": 1920,
+                                    "height": 1080
+                                }
+                            },
+                            {
+                                "key": "AddText",
+                                "values": {
+                                    "text": "Text1",
+                                    "location": {
+                                        "x": 25,
+                                        "y": 615
+                                    },
+                                    "font": {
+                                        "path": "arial.ttf",
+                                        "size": 75
+                                    },
+                                    "fill": {
+                                        "r": 248,
+                                        "g": 171,
+                                        "b": 27
+                                    },
+                                    "stroke": {
+                                        "width": 2,
+                                        "fill": {
+                                            "r": 82,
+                                            "g": 23,
+                                            "b": 13
+                                        }
+                                    },
+                                    "spacing": 10
+                                }
+                            },
+                            {
+                                "key": "AddText",
+                                "values": {
+                                    "text": "Text2",
+                                    "location": {
+                                        "x": 100,
+                                        "y": 800
+                                    },
+                                    "font": {
+                                        "path": "arial.ttf",
+                                        "size": 75
+                                    },
+                                    "fill": {
+                                        "r": 248,
+                                        "g": 171,
+                                        "b": 27
+                                    },
+                                    "stroke": {
+                                        "width": 2,
+                                        "fill": {
+                                            "r": 82,
+                                            "g": 23,
+                                            "b": 13
+                                        }
+                                    },
+                                    "spacing": 10
+                                }
+                            },
+                            {
+                                "key": "AddText",
+                                "values": {
+                                    "text": "Text3",
+                                    "location": {
+                                        "x": 200,
+                                        "y": 900
+                                    },
+                                    "font": {
+                                        "path": "arial.ttf",
+                                        "size": 75
+                                    },
+                                    "fill": {
+                                        "r": 248,
+                                        "g": 171,
+                                        "b": 27
+                                    },
+                                    "stroke": {
+                                        "width": 2,
+                                        "fill": {
+                                            "r": 82,
+                                            "g": 23,
+                                            "b": 13
+                                        }
+                                    },
+                                    "spacing": 10
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    "thumbnail_processor": {
+        "thumbnailOutputFormat": "output/thumbnail.png",
+        "image_steps": [
+            {
+                "key": "BackgroundImage",
+                "values": {
+                    "image_path": "assets/background_image.jpg"
+                }
+            },
+            {
+                "key": "CropCenterIdealThumbnailSize",
+                "values": {
+                }
+            },
+            {
+                "key": "AddText",
+                "values": {
+                    "text": "Playlist name",
+                    "location": {
+                        "x": 25,
+                        "y": 615
+                    },
+                    "font": {
+                        "path": "arial.ttf",
+                        "size": 75
+                    },
+                    "fill": {
+                        "r": 248,
+                        "g": 171,
+                        "b": 27
+                    },
+                    "stroke": {
+                        "width": 2,
+                        "fill": {
+                            "r": 82,
+                            "g": 23,
+                            "b": 13
+                        }
+                    },
+                    "spacing": 10
+                }
+            },
+            {
+                "key": "AddText",
+                "values": {
+                    "text": "{episode_number}",
+                    "location": {
+                        "x": 1075,
+                        "y": 10
+                    },
+                    "font": {
+                        "path": "arial.ttf",
+                        "size": 125
+                    },
+                    "fill": {
+                        "r": 248,
+                        "g": 171,
+                        "b": 27
+                    },
+                    "stroke": {
+                        "width": 2,
+                        "fill": {
+                            "r": 82,
+                            "g": 23,
+                            "b": 13
+                        }
+                    },
+                    "spacing": 10
+                }
+            }
+        ]
+    }
+}
